@@ -1,0 +1,267 @@
+/* Stats bar */
+.table-stats {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  margin-left: 6px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.5px;
+}
+
+.stat-divider {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Loading & empty states */
+.table-loading,
+.table-empty {
+  text-align: center;
+  padding: 60px 24px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.loading-icon,
+.empty-icon {
+  font-size: 56px;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.table-empty h3 {
+  font-size: 22px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 6px;
+}
+
+.table-empty p {
+  font-size: 16px;
+}
+
+/* Table wrapper */
+.table-scroll {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.dashboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  table-layout: fixed;
+}
+
+/* Header */
+.dashboard-table thead th {
+  background: rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 14px 18px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  user-select: none;
+}
+
+th.sortable {
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+th.sortable:hover {
+  color: #FFD966;
+}
+
+.sort-arrow {
+  font-size: 11px;
+  color: #FFD966;
+}
+
+/* Rows */
+.dashboard-table tbody tr {
+  transition: background 0.15s;
+}
+
+.dashboard-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.dashboard-table tbody td {
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  vertical-align: middle;
+}
+
+/* Group first row — top border accent */
+tr.group-first td {
+  border-top: 2px solid rgba(255, 217, 102, 0.25);
+}
+
+/* Callsign, name, aircraft cells */
+.cell-callsign {
+  font-weight: 700;
+  font-size: 18px;
+  color: #FFD966;
+  letter-spacing: 0.5px;
+  width: 12%;
+}
+
+.cell-name {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+  width: 10%;
+}
+
+.cell-aircraft {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 15px;
+  width: 16%;
+  white-space: normal;
+}
+
+.cell-leg {
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  width: 5%;
+}
+
+/* Airport cell */
+.cell-airport {
+  width: 12%;
+}
+
+.airport-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.airport-cell strong {
+  font-size: 16px;
+  color: #fff;
+}
+
+.airport-name {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* Card badge */
+.card-badge-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: color-mix(in srgb, var(--card-color) 20%, transparent);
+  border: 1px solid color-mix(in srgb, var(--card-color) 35%, transparent);
+  border-radius: 8px;
+  padding: 6px 12px;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.card-badge.empty {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.card-icon {
+  font-size: 17px;
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Card tooltip — rendered via portal in document.body */
+.card-tooltip {
+  position: fixed;
+  z-index: 9999;
+  width: 300px;
+  transform: translateY(-100%);
+  background: #1a4050;
+  border: 2px solid color-mix(in srgb, var(--card-color) 45%, transparent);
+  border-radius: 14px;
+  padding: 28px 24px;
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  animation: tooltipFadeIn 0.15s ease-out;
+}
+
+@keyframes tooltipFadeIn {
+  from { opacity: 0; transform: translateY(-100%) translateY(6px); }
+  to { opacity: 1; transform: translateY(-100%); }
+}
+
+.tooltip-icon {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.tooltip-title {
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.tooltip-text {
+  display: block;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.tooltip-category {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--card-color);
+}
+
+/* Timestamp */
+.cell-time {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+  width: 7%;
+}
+
+.cell-card {
+  width: 16%;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .dashboard-table {
+    font-size: 14px;
+  }
+
+  .dashboard-table thead th,
+  .dashboard-table tbody td {
+    padding: 10px 12px;
+  }
+
+  .airport-name {
+    display: none;
+  }
+}

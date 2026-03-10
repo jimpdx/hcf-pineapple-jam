@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pineapple Jam — HCF VATSIM Event</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #185565;
+    color: #fff;
+    font-family: 'Outfit', system-ui, sans-serif;
+    line-height: 1.6;
+  }
+
+  /* Banner */
+  .banner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, #14304D 0%, #1A5276 50%, #1F6F8B 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none; /* hidden until src is set */
+  }
+  .banner-placeholder {
+    text-align: center;
+    color: rgba(255,255,255,0.25);
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  /* Main content */
+  .content {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 24px;
+  }
+
+  /* Coming Soon badge */
+  .badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #F39C12, #E67E22);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+  }
+
+  /* Title */
+  .title {
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 900;
+    color: #FFD966;
+    text-shadow: 2px 2px 0 rgba(180,120,0,0.3);
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+ }
+
+  .subtitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+
+  /* Event details bar */
+  .details-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .detail-chip {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 12px 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  .detail-chip .label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 4px;
+  }
+  .detail-chip .value {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  /* Divider */
+  .divider {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #FFD966, transparent);
+    border-radius: 2px;
+    margin: 40px 0;
+  }
+
+  /* Description */
+  .description {
+    font-size: 17px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.75;
+    max-width: 760px;
+    margin-bottom: 20px;
+  }
+
+  /* Section headers */
+  .section-title {
+    font-size: 24px;
+    font-weight: 900;
+    color: #FFD966;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+
+  /* Airport grid */
+  .airport-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .airport-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .airport-card .icao {
+    font-size: 18px;
+    font-weight: 900;
+    color: #FFD966;
+    min-width: 52px;
+  }
+  .airport-card .name {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+  }
+  .airport-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 12px;
+    margin-top: 8px;
+  }
+
+  /* Aircraft list */
+  .aircraft-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 40px;
+    margin-bottom: 16px;
+  }
+  .aircraft-item {
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .aircraft-item .name { color: rgba(255,255,255,0.8); font-weight: 600; }
+  .aircraft-item .speed { color: rgba(255,255,255,0.35); font-size: 13px; font-weight: 600; }
+  .aircraft-note {
+    font-size: 13px;
+    color: rgba(255,255,255,0.3);
+    font-style: italic;
+    margin-top: 8px;
+  }
+
+  /* Turn cards */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 900px) {
+    .cards-grid { grid-template-columns: repeat(2, 1fr); }
+    .aircraft-columns { grid-template-columns: 1fr; }
+  }
+
+  .turn-card {
+    border-radius: 14px;
+    background: linear-gradient(160deg, #0E1A2B 0%, #162D4A 100%);
+    padding: 18px 16px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-height: 320px;
+    justify-content: space-between;
+  }
+  .turn-card .pj-header {
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #FFD966;
+    text-transform: uppercase;
+  }
+  .turn-card .cat {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+  .turn-card .icon {
+    font-size: 56px;
+    line-height: 1;
+    filter: drop-shadow(0 3px 8px rgba(0,0,0,0.4));
+  }
+  .turn-card .card-title {
+    font-size: 20px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.15;
+    letter-spacing: -0.3px;
+  }
+  .turn-card .card-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+    padding: 0 4px;
+  }
+
+  .card-ops { border: 2px solid rgba(231,76,60,0.25); }
+  .card-route { border: 2px solid rgba(41,128,185,0.25); }
+  .card-cargo { border: 2px solid rgba(39,174,96,0.25); }
+  .card-aloha { border: 2px solid rgba(243,156,18,0.25); }
+
+  .cat-ops { color: #E74C3C; }
+  .cat-route { color: #2980B9; }
+  .cat-cargo { color: #27AE60; }
+  .cat-aloha { color: #F39C12; }
+
+  .cards-legend {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 40px 24px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.15);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Banner -->
+<div class="banner">
+  <!-- Replace src with your banner image URL or file -->
+  <img id="bannerImg" src="Pineapple_Jam_HCF.png" alt="Pineapple Jam Banner" />
+</div>
+
+<div class="content">
+
+  <!-- Coming Soon + Title -->
+  <div class="badge">Coming Soon</div>
+  <div class="title">Pineapple Jam 🍍</div>
+  <div class="subtitle">Hawaiian Island Cargo Challenge</div>
+
+  <!-- Event Details -->
+  <div class="details-bar">
+    <div class="detail-chip">
+      <span class="label">Date</span>
+      <span class="value">Sunday, April 12, 2026</span>
+    </div>
+    <div class="detail-chip">
+      <span class="label">Time</span>
+      <span class="value">1700z – 2000z</span>
+    </div>
+    <div class="detail-chip">
+      <span class="label">Facility</span>
+      <span class="value">Honolulu Control (HCF)</span>
+    </div>
+    <div class="detail-chip">
+      <span class="label">Network</span>
+      <span class="value">VATSIM</span>
+    </div>
+  </div>
+
+  <!-- Description -->
+  <p class="description">
+    <strong>Pineapple Jam</strong> is a Hawaiian island-hopping cargo challenge hosted by the Honolulu Control Facility. Grab your favorite prop or turboprop — from a Cessna Caravan to a King Air 350, a classic DC-3 to a mighty C-130 — and haul cargo between the islands of Hawaii with full ATC coverage across HCF. Fly short VFR hops into strips like Dillingham and Kalaupapa, or take on longer inter-island runs between Honolulu, Maui, Kona, Hilo, and Lihue. Whether you're hand-flying a Twin Otter through the mountain passes or cruising a King Air above the clouds, there's a route and an aircraft for every pilot.
+  </p>
+  <p class="description">
+    What makes Pineapple Jam different? <strong>Turn Cards.</strong> Before each leg, draw a random card that changes how you fly — full fuel departure, no GPS, a mandatory go-around, a blown tire on the taxiway, or maybe a Shaka Bonus for double bragging rights. Some cards test your skills, some reroute your plans, and some are pure aloha. Join us Sunday, April 12th from 1700z to 2000z and see how many islands you can hit before the pineapples spoil.
+  </p>
+
+  <div class="divider"></div>
+
+  <!-- Airports -->
+  <div class="section-title">Airports</div>
+  <div class="airport-label">Primary Fields (Staffed)</div>
+  <div class="airport-grid">
+    <div class="airport-card"><span class="icao">PHNL</span><span class="name">Honolulu / Inouye</span></div>
+    <div class="airport-card"><span class="icao">PHOG</span><span class="name">Kahului, Maui</span></div>
+    <div class="airport-card"><span class="icao">PHKO</span><span class="name">Kona, Big Island</span></div>
+    <div class="airport-card"><span class="icao">PHTO</span><span class="name">Hilo, Big Island</span></div>
+    <div class="airport-card"><span class="icao">PHLI</span><span class="name">Lihue, Kauai</span></div>
+    <div class="airport-card"><span class="icao">PHMK</span><span class="name">Molokai</span></div>
+  </div>
+  <div class="airport-label">VFR Strips</div>
+  <div class="airport-grid">
+    <div class="airport-card"><span class="icao">PHDH</span><span class="name">Dillingham, Oahu</span></div>
+    <div class="airport-card"><span class="icao">PHJH</span><span class="name">Kapalua, West Maui</span></div>
+    <div class="airport-card"><span class="icao">PHMU</span><span class="name">Waimea, Big Island</span></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Aircraft -->
+  <div class="section-title">Aircraft</div>
+  <div class="aircraft-columns">
+    <div class="aircraft-item"><span class="name">BN-2 Islander (Piston)</span><span class="speed">150kt</span></div>
+    <div class="aircraft-item"><span class="name">Shorts SD330/SD360</span><span class="speed">190kt</span></div>
+    <div class="aircraft-item"><span class="name">C-47D Skytrain (DC-3)</span><span class="speed">160kt</span></div>
+    <div class="aircraft-item"><span class="name">Beechcraft Baron G58</span><span class="speed">200kt</span></div>
+    <div class="aircraft-item"><span class="name">DHC-4 Caribou</span><span class="speed">160kt</span></div>
+    <div class="aircraft-item"><span class="name">Black Square Piston Duke</span><span class="speed">200kt</span></div>
+    <div class="aircraft-item"><span class="name">BN-2T Islander (Turbine)</span><span class="speed">170kt</span></div>
+    <div class="aircraft-item"><span class="name">Cessna 408 SkyCourier</span><span class="speed">200kt</span></div>
+    <div class="aircraft-item"><span class="name">DHC-6 Twin Otter</span><span class="speed">170kt</span></div>
+    <div class="aircraft-item"><span class="name">King Air C90 GTX</span><span class="speed">230kt</span></div>
+    <div class="aircraft-item"><span class="name">Piper Comanche 250</span><span class="speed">170kt</span></div>
+    <div class="aircraft-item"><span class="name">A2A Aerostar 600</span><span class="speed">250kt</span></div>
+    <div class="aircraft-item"><span class="name">Short SC.7 Skyvan</span><span class="speed">175kt</span></div>
+    <div class="aircraft-item"><span class="name">King Air 200</span><span class="speed">250kt</span></div>
+    <div class="aircraft-item"><span class="name">Bonanza G36</span><span class="speed">175kt</span></div>
+    <div class="aircraft-item"><span class="name">Black Square Turbine Duke</span><span class="speed">270kt</span></div>
+    <div class="aircraft-item"><span class="name">Cessna 208 Caravan</span><span class="speed">180kt</span></div>
+    <div class="aircraft-item"><span class="name">MU-2</span><span class="speed">270kt</span></div>
+    <div class="aircraft-item"><span class="name">Kodiak 100</span><span class="speed">180kt</span></div>
+    <div class="aircraft-item"><span class="name">C-130 Hercules</span><span class="speed">290kt</span></div>
+    <div class="aircraft-item"><span class="name">Curtiss C-46 Commando</span><span class="speed">180kt</span></div>
+    <div class="aircraft-item"><span class="name">King Air 350</span><span class="speed">300kt</span></div>
+    <div class="aircraft-item"><span class="name">Beechcraft Model 18</span><span class="speed">190kt</span></div>
+    <div class="aircraft-item"><span class="name">TBM 930/850</span><span class="speed">330kt</span></div>
+    <div class="aircraft-item"><span class="name"></span><span class="speed"></span></div>
+  </div>
+  <p class="aircraft-note">Props and turboprops preferred. 150kt minimum cruise speed. Many aircraft are free defaults in MSFS 2024.</p>
+
+  <div class="divider"></div>
+
+  <!-- Turn Cards -->
+  <div class="section-title">Turn Cards</div>
+  <p class="description" style="margin-bottom: 24px;">
+    Draw a card before each leg. 24 cards across 4 categories — some test your skills, some reroute your plans, and some are pure aloha.
+  </p>
+
+  <div class="cards-grid">
+    <!-- OPS -->
+    <div class="turn-card card-ops">
+      <div class="pj-header">Pineapple Jam</div>
+      <div class="cat cat-ops">Operational</div>
+      <div class="icon">🐢</div>
+      <div class="card-title">Hono Speed Trap</div>
+      <div class="card-desc">Slow it down! Maintain 150 KIAS maximum cruise speed for this entire leg.</div>
+    </div>
+    <div class="turn-card card-ops">
+      <div class="pj-header">Pineapple Jam</div>
+      <div class="cat cat-ops">Operational</div>
+      <div class="icon">🔄</div>
+      <div class="card-title">Go Around!</div>
+      <div class="card-desc">Mandatory go-around on your first approach. Circle back and re-enter the pattern.</div>
+    </div>
+    <!-- FLIGHT PLAN -->
+    <div class="turn-card card-route">
+      <div class="pj-header">Pineapple Jam</div>
+      <div class="cat cat-route">Flight Plan</div>
+      <div class="icon">🔀</div>
+      <div class="card-title">REROUTED!</div>
+      <div class="card-desc">Change of plans! ATC will assign you a new destination airport. File a new flight plan.</div>
+    </div>
+    <div class="turn-card card-route">
+      <div class="pj-header">Pineapple Jam</div>
+      <div class="cat cat-route">Flight Plan</div>
+      <div class="icon">💥</div>
+      <div class="card-title">Tire Blowout!</div>
+      <div class="card-desc">Blown tire while taxiing! Hold your position on the taxiway for 5 minutes.</div>
+    </div>
+    <!-- CARGO -->
+    <div class="turn-card card-cargo">
+      <div class="pj-header">Pineapple Jam</div>
+      <div class="cat cat-cargo">Cargo</div>
+      <div class="icon">🍍</div>
+      <div class="card-title">Heavy Load</div>
+      <div class="card-desc">Overweight pineapple shipment! Add 500 lbs to your load and recalculate performance.</div>
+    </div>
+    <div class="turn-card card-cargo">
+      <div class="pj-header">Pineapple Jam</div>
+      <div class="cat cat-cargo">Cargo</div>
+      <div class="icon">🐕</div>
+      <div class="card-title">Live Cargo</div>
+      <div class="card-desc">Transporting animals to the next island. Smooth ride — no bank angle greater than 10°.</div>
+    </div>
+    <!-- WILD CARD -->
+    <div class="turn-card card-aloha">
+      <div class="pj-header">Pineapple Jam</div>
+      <div class="cat cat-aloha">Wild Card</div>
+      <div class="icon">🤙</div>
+      <div class="card-title">Shaka Bonus!</div>
+      <div class="card-desc">Lucky draw! Earn double points this leg. No strings attached, no restrictions. Mahalo!</div>
+    </div>
+    <div class="turn-card card-aloha">
+      <div class="pj-header">Pineapple Jam</div>
+      <div class="cat cat-aloha">Wild Card</div>
+      <div class="icon">☕</div>
+      <div class="card-title">Kona Coffee Break</div>
+      <div class="card-desc">Grab a Kona coffee! Mandatory 5 minute gate hold before pushback. You've earned it.</div>
+    </div>
+  </div>
+
+  <div class="cards-legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#E74C3C"></div> Operational (9)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#2980B9"></div> Flight Plan (6)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#27AE60"></div> Cargo (4)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#F39C12"></div> Wild Card (5)</div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Pineapple Jam · Honolulu Control Facility · VATSIM · April 12, 2026
+</div>
+
+<script>
+  // Auto-show banner image if src is set
+  const img = document.getElementById('bannerImg');
+  const placeholder = document.getElementById('bannerPlaceholder');
+  if (img.src && !img.src.endsWith('/')) {
+    img.style.display = 'block';
+    placeholder.style.display = 'none';
+  }
+  img.onload = () => { img.style.display = 'block'; placeholder.style.display = 'none'; };
+</script>
+
+</body>
+</html>
