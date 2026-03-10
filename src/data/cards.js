@@ -1,40 +1,36 @@
 export const CARDS = [
   // OPS (9)
-  { id: 1, title: "Full Fuel", text: "Depart with full tanks. Recalculate performance.", icon: "\u26fd", category: "Ops", color: "#E74C3C" },
-  { id: 2, title: "Hand Fly Only", text: "No autopilot. Hand-fly from takeoff to touchdown.", icon: "\ud83e\udd32", category: "Ops", color: "#E74C3C" },
-  { id: 3, title: "Hono Speed Trap", text: "150 KIAS max cruise this leg.", icon: "\ud83d\udc22", category: "Ops", color: "#E74C3C" },
-  { id: 4, title: "No GPS", text: "Navigate by VOR, NDB, or pilotage only.", icon: "\ud83e\udded", category: "Ops", color: "#E74C3C" },
-  { id: 5, title: "Pressurization INOP", text: "Must stay below 12,000ft.", icon: "\u26a0\ufe0f", category: "Ops", color: "#E74C3C" },
-  { id: 6, title: "Engine Trouble", text: "Reduce your cruise speed by 20% this leg.", icon: "\ud83d\udd27", category: "Ops", color: "#E74C3C" },
-  { id: 7, title: "Scenic Route", text: "3,000ft AGL maximum altitude.", icon: "\ud83c\udfd4\ufe0f", category: "Ops", color: "#E74C3C" },
-  { id: 8, title: "Go Around!", text: "Mandatory go-around on first approach. Re-enter the pattern.", icon: "\ud83d\udd04", category: "Ops", color: "#E74C3C" },
-  { id: 9, title: "Fragile Cargo", text: "No bank angle greater than 20\u00b0.", icon: "\ud83d\udce6", category: "Ops", color: "#E74C3C" },
+  { id: 1, text: "Depart with full tanks! Recalculate takeoff and landing performance.", title: "Full Fuel", icon: "⛽", category: "OPERATIONAL", color: "#D94F3B" },
+  { id: 2, text: "No autopilot allowed! Hand-fly from takeoff to touchdown the entire leg.", title: "Hand Fly Only", icon: "✋", category: "OPERATIONAL", color: "#D94F3B" },
+  { id: 3, text: "Slow it down! Maintain 150 KIAS maximum cruise speed this entire leg.", title: "Honu Slowdown", icon: "🐢", category: "OPERATIONAL", color: "#D94F3B" },
+  { id: 4, text: "GPS is out! Navigate by VOR radials, NDB, or pilotage only this leg.", title: "No GPS", icon: "🧭", category: "OPERATIONAL", color: "#D94F3B" },
+  { id: 5, text: "Pressurization failure! Don your masks and stay below 12,000 ft for this entire leg.", title: "Press. INOP", icon: "💨", category: "OPERATIONAL", color: "#D94F3B" },
+  { id: 6, text: "Engine running rough! Reduce your cruise speed by 20% for this entire leg.", title: "Engine Trouble", icon: "🔧", category: "OPERATIONAL", color: "#D94F3B" },
+  { id: 7, text: "Enjoy the view! Maintain a maximum altitude of 5,000 ft AGL this leg.", title: "Scenic Route", icon: "🏝️", category: "OPERATIONAL", color: "#D94F3B" },
+  { id: 8, text: "Missed approach! Execute a mandatory go-around on your first approach.", title: "Go Around!", icon: "🔄", category: "OPERATIONAL", color: "#D94F3B" },
+  { id: 9, text: "Handle with care! No bank angle greater than 20° this entire leg.", title: "Fragile Cargo", icon: "📦", category: "OPERATIONAL", color: "#D94F3B" },
 
   // FLIGHT PLAN (6)
-  { id: 10, title: "REROUTED!", text: "ATC assigns a new destination.", icon: "\ud83d\udd00", category: "Route", color: "#2980B9" },
-  { id: 11, title: "Tire Blowout!", text: "Blown tire while taxiing! Hold position on the taxiway for 5 minutes.", icon: "\ud83d\udca5", category: "Route", color: "#2980B9" },
-  { id: 12, title: "Visual Approach", text: "Cancel IFR. Request a visual approach at destination.", icon: "\ud83d\udc41\ufe0f", category: "Route", color: "#2980B9" },
-  { id: 13, title: "Reverse Route", text: "Fly your planned route backwards.", icon: "\u21a9\ufe0f", category: "Route", color: "#2980B9" },
-  { id: 14, title: "Detour", text: "Overfly a waypoint of ATC's choice before proceeding to destination.", icon: "\ud83d\udccd", category: "Route", color: "#2980B9" },
-  { id: 15, title: "Runway Change", text: "Trade winds shifted! Request opposite runway on arrival.", icon: "\ud83c\udf2c\ufe0f", category: "Route", color: "#2980B9" },
+  { id: 10, text: "Blown tire while taxiing! Hold position on the taxiway for 5 minutes at ATC's discretion.", title: "Tire Blowout", icon: "💥", category: "FLIGHT PLAN", color: "#5BAFCF" },
+  { id: 11, text: "Change of plans! ATC will assign you a new destination airport enroute!", title: "REROUTED", icon: "🔀", category: "FLIGHT PLAN", color: "#5BAFCF" },
+  { id: 12, text: "IFR cancellation received! Maintain VFR only for this leg. ATC will amend your flightplan.", title: "Visual Only", icon: "👀", category: "FLIGHT PLAN", color: "#5BAFCF" },
+  { id: 13, text: "Plot twist! Fly your planned route in reverse order this leg. Refile please.", title: "Reverse Route", icon: "🔃", category: "FLIGHT PLAN", color: "#5BAFCF" },
+  { id: 14, text: "Overfly a waypoint of ATC's choice before proceeding to destination.", title: "Detour", icon: "↩️", category: "FLIGHT PLAN", color: "#5BAFCF" },
+  { id: 15, text: "Trade winds shifted! Expect to land the opposite runway if ATC is able to accomodate.", title: "Runway Change", icon: "🌬️", category: "FLIGHT PLAN", color: "#5BAFCF" },
 
-  // CARGO (4)
-  { id: 16, title: "Heavy Load", text: "Overweight pineapple shipment! Add 500 lbs. Recalculate performance.", icon: "\ud83c\udf4d", category: "Cargo", color: "#27AE60" },
-  { id: 17, title: "Perishable Goods", text: "Must land within 25 minutes or cargo spoils.", icon: "\ud83e\uddca", category: "Cargo", color: "#27AE60" },
-  { id: 18, title: "Live Cargo", text: "Transporting animals. No bank angle greater than 10\u00b0.", icon: "\ud83d\udc15", category: "Cargo", color: "#27AE60" },
-  { id: 19, title: "Priority Shipment", text: "Double points if leg completed in under 20 minutes.", icon: "\u26a1", category: "Cargo", color: "#27AE60" },
+  // CARGO (2)
+  { id: 16, text: "Overweight pineapple shipment! Add 500 lbs to your cargo payload.", title: "Heavy Load", icon: "🍍", category: "CARGO", color: "#3AAA8E" },
+  { id: 17, text: "Transporting animals to the next island. No bank angle greater than 10° this leg.", title: "Live Cargo", icon: "🐕", category: "CARGO", color: "#3AAA8E" },
 
-  // WILD CARD (5)
-  { id: 20, title: "Shaka Bonus!", text: "Double points this leg. No strings attached. Mahalo!", icon: "\ud83e\udd19", category: "Aloha", color: "#F1C40F" },
-  { id: 21, title: "Aloha Spirit", text: "Pass your next turn card to another pilot of your choice.", icon: "\ud83c\udf3a", category: "Aloha", color: "#F1C40F" },
-  { id: 22, title: "Island Local", text: "You know a shortcut! Skip directly to any airport of your choice.", icon: "\ud83d\uddfa\ufe0f", category: "Aloha", color: "#F1C40F" },
-  { id: 23, title: "Clear Skies", text: "No restriction this leg. Fly free.", icon: "\u2600\ufe0f", category: "Aloha", color: "#F1C40F" },
-  { id: 24, title: "Kona Coffee Break", text: "Grab a coffee! 5 minute gate hold before pushback.", icon: "\u2615", category: "Aloha", color: "#F1C40F" },
+  // WILD CARD (3)
+  { id: 20, text: "Lucky draw! You get priority sequencing and direct routing. Mahalo!", title: "Shaka Bonus", icon: "🤙", category: "WILD CARD", color: "#F5C518" },
+  { id: 21, text: "You know the area! Receive direct routing to your destination upon request.", title: "Island Local", icon: "🗺️", category: "WILD CARD", color: "#F5C518" },
+  { id: 22, text: "Grab a Kona coffee! Mandatory 5 minute gate hold before pushback.", title: "Coffee Break", icon: "☕", category: "WILD CARD", color: "#F5C518" },
 ];
 
 export const CATEGORY_LABELS = {
-  Ops: "Operational",
-  Route: "Flight Plan",
-  Cargo: "Cargo",
-  Aloha: "Wild Card",
+  OPERATIONAL: "OPERATIONAL",
+  "FLIGHT PLAN": "FLIGHT PLAN",
+  CARGO: "CARGO",
+  "WILD CARD": "WILD CARD",
 };
