@@ -11,7 +11,7 @@ const PREVIEW_CARDS = [
   { id: 9, text: "Handle with care! No bank angle greater than 20° this entire leg.", title: "Fragile Cargo", icon: "📦", category: "Ops", color: "#D94F3B" },
 
   // FLIGHT PLAN
-  { id: 10, text: "Blown tire while taxiing! Hold position on the taxiway for 5 minutes.", title: "Tire Blowout", icon: "💥", category: "Route", color: "#5BAFCF" },
+  { id: 10, text: "Blown tire while taxiing! Hold position on the taxiway for 5 minutes at ATC's discretion.", title: "Tire Blowout", icon: "💥", category: "Route", color: "#5BAFCF" },
   { id: 11, text: "Change of plans! ATC will assign you a new destination airport enroute!", title: "REROUTED", icon: "🔀", category: "Route", color: "#5BAFCF" },
   { id: 12, text: "IFR cancellation received! Maintain VFR only for this leg. ATC will amend your flightplan.", title: "Visual Only", icon: "👀", category: "Route", color: "#5BAFCF" },
   { id: 13, text: "Plot twist! Fly your planned route in reverse order this leg. Refile please.", title: "Reverse Route", icon: "🔃", category: "Route", color: "#5BAFCF" },
