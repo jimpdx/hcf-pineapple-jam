@@ -51,10 +51,10 @@ function CardBadge({ card }) {
         left: pos.left + 'px',
       }}
     >
+      <span className="tooltip-category">{card.category}</span>
       <span className="tooltip-icon">{card.icon}</span>
       <span className="tooltip-title">{card.title}</span>
       <span className="tooltip-text">{card.text}</span>
-      <span className="tooltip-category">{card.category}</span>
     </div>,
     document.body
   )

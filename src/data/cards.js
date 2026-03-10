@@ -25,11 +25,11 @@ export const CARDS = [
   { id: 19, title: "Priority Shipment", text: "Double points if leg completed in under 20 minutes.", icon: "\u26a1", category: "Cargo", color: "#27AE60" },
 
   // WILD CARD (5)
-  { id: 20, title: "Shaka Bonus!", text: "Double points this leg. No strings attached. Mahalo!", icon: "\ud83e\udd19", category: "Aloha", color: "#F39C12" },
-  { id: 21, title: "Aloha Spirit", text: "Pass your next turn card to another pilot of your choice.", icon: "\ud83c\udf3a", category: "Aloha", color: "#F39C12" },
-  { id: 22, title: "Island Local", text: "You know a shortcut! Skip directly to any airport of your choice.", icon: "\ud83d\uddfa\ufe0f", category: "Aloha", color: "#F39C12" },
-  { id: 23, title: "Clear Skies", text: "No restriction this leg. Fly free.", icon: "\u2600\ufe0f", category: "Aloha", color: "#F39C12" },
-  { id: 24, title: "Kona Coffee Break", text: "Grab a coffee! 5 minute gate hold before pushback.", icon: "\u2615", category: "Aloha", color: "#F39C12" },
+  { id: 20, title: "Shaka Bonus!", text: "Double points this leg. No strings attached. Mahalo!", icon: "\ud83e\udd19", category: "Aloha", color: "#F1C40F" },
+  { id: 21, title: "Aloha Spirit", text: "Pass your next turn card to another pilot of your choice.", icon: "\ud83c\udf3a", category: "Aloha", color: "#F1C40F" },
+  { id: 22, title: "Island Local", text: "You know a shortcut! Skip directly to any airport of your choice.", icon: "\ud83d\uddfa\ufe0f", category: "Aloha", color: "#F1C40F" },
+  { id: 23, title: "Clear Skies", text: "No restriction this leg. Fly free.", icon: "\u2600\ufe0f", category: "Aloha", color: "#F1C40F" },
+  { id: 24, title: "Kona Coffee Break", text: "Grab a coffee! 5 minute gate hold before pushback.", icon: "\u2615", category: "Aloha", color: "#F1C40F" },
 ];
 
 export const CATEGORY_LABELS = {

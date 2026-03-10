@@ -5,7 +5,7 @@
 - [x] Dependencies installed (react, react-dom, firebase)
 - [x] Firebase config (`src/firebase.js`) with emulator auto-connect in dev
 - [x] Data files: `src/data/airports.js`, `aircraft.js`, `cards.js`
-- [x] App layout with banner image, nav bar (tagline + button), dark teal theme
+- [x] App layout with banner image, nav bar (tagline + button), light tropical theme
 - [x] `firebase.json` configured (Hosting → `dist`, SPA rewrite, emulator ports)
 - [x] `firestore.rules` set to allow read/write until April 15, 2026
 - [x] Dev server verified running at localhost:5173
@@ -33,7 +33,7 @@
 - [ ] `TurnCardReveal.jsx` — CSS 3D flip animation (~0.6s)
 - [ ] Random card selection on leg submit, saved with leg in Firestore
 - [ ] Emoji particle burst animation for Wild Card (Aloha) draws
-- [ ] Dashboard: hover over Turn Card pill shows full card popup (tooltip with icon, title, text, category)
+- [x] Dashboard: hover over Turn Card pill shows full card popup (tooltip with icon, title, text, category)
 
 ## Story 5: Polish & Deploy 🔲
 - [ ] Final responsive pass (phone-first for pilots)
