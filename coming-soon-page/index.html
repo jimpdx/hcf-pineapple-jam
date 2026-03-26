@@ -175,6 +175,58 @@
     margin-top: 8px;
   }
 
+  /* Promo banner */
+  .promo-banner {
+    background: linear-gradient(135deg, #1A5276 0%, #2471A3 100%);
+    border: 2px solid rgba(255,217,102,0.3);
+    border-radius: 12px;
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+  .promo-banner .promo-text {
+    flex: 1;
+    min-width: 200px;
+  }
+  .promo-banner .promo-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #FFD966;
+    margin-bottom: 6px;
+  }
+  .promo-banner .promo-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .promo-banner .promo-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+  }
+  .promo-banner .promo-btn {
+    background: linear-gradient(135deg, #F39C12, #E67E22);
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .promo-banner .promo-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(243,156,18,0.4);
+  }
+
   /* Aircraft list */
   .aircraft-columns {
     display: grid;
@@ -338,7 +390,7 @@
 
   <!-- Description -->
   <p class="description">
-    <strong>Pineapple Jam</strong> is a Hawaiian island-hopping cargo challenge hosted by the Honolulu Control Facility. Grab your favorite prop or turboprop — from a Cessna Caravan to a King Air 350, a classic DC-3 to a mighty C-130 — and haul cargo between the islands of Hawaii with full ATC coverage across HCF. Fly short VFR hops into strips like Dillingham and Kalaupapa, or take on longer inter-island runs between Honolulu, Maui, Kona, Hilo, and Lihue. Whether you're hand-flying a Twin Otter through the mountain passes or cruising a King Air above the clouds, there's a route and an aircraft for every pilot.
+    <strong>Pineapple Jam</strong> is a Hawaiian island-hopping cargo challenge hosted by the Honolulu Control Facility. Grab your favorite prop or turboprop — from a Cessna Caravan to a King Air 350, a classic DC-3 to a mighty C-130 — and haul cargo between the islands of Hawaii with full ATC coverage across HCF. Fly short VFR hops into strips like Dillingham and Kalaupapa, or take on longer inter-island runs between Maui, Kona, Hilo, Molokai and Lihue. Whether you're hand-flying a Twin Otter through the mountain passes or cruising a King Air above the clouds, there's a route and an aircraft for every pilot.
   </p>
   <p class="description">
     What makes Pineapple Jam different? <strong>Turn Cards.</strong> Before each leg, draw a random card that changes how you fly — full fuel departure, no GPS, a mandatory go-around, a blown tire on the taxiway, or maybe a Shaka Bonus for double bragging rights. Some cards test your skills, some reroute your plans, and some are pure aloha. Join us Sunday, April 12th from 1700z to 2000z and see how many islands you can hit before the pineapples spoil.
@@ -350,7 +402,7 @@
   <div class="section-title">Airports</div>
   <div class="airport-label">Primary Fields (Staffed)</div>
   <div class="airport-grid">
-    <div class="airport-card"><span class="icao">PHNL</span><span class="name">Honolulu / Inouye</span></div>
+    <div class="airport-card"><span class="icao">PHJR</span><span class="name">Kalaeloa / John Rogers, Oahu</span></div>
     <div class="airport-card"><span class="icao">PHOG</span><span class="name">Kahului, Maui</span></div>
     <div class="airport-card"><span class="icao">PHKO</span><span class="name">Kona, Big Island</span></div>
     <div class="airport-card"><span class="icao">PHTO</span><span class="name">Hilo, Big Island</span></div>
@@ -362,6 +414,16 @@
     <div class="airport-card"><span class="icao">PHDH</span><span class="name">Dillingham, Oahu</span></div>
     <div class="airport-card"><span class="icao">PHJH</span><span class="name">Kapalua, West Maui</span></div>
     <div class="airport-card"><span class="icao">PHMU</span><span class="name">Waimea, Big Island</span></div>
+  </div>
+
+  <!-- Scenery Promo -->
+  <div class="promo-banner">
+    <div class="promo-text">
+      <div class="promo-label">Enhance Your Experience</div>
+      <div class="promo-title">Northern Sky Studio Hawaiian Airports</div>
+      <div class="promo-desc">High-quality payware scenery available for PHOG, PHLI, PHMK, PHJH, PHDH, PHMU and more.</div>
+    </div>
+    <a href="https://inibuilds.com/collections/northern-sky-studio" target="_blank" rel="noopener" class="promo-btn">Browse Scenery</a>
   </div>
 
   <div class="divider"></div>

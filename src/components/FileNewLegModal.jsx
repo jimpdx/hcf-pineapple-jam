@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { collection, addDoc, getDocs, query, where, serverTimestamp } from 'firebase/firestore'
 import { db } from '../firebase'
 import { CARDS } from '../data/cards'
+import { AIRPORTS } from '../data/airports'
 import AirportAutocomplete from './AirportAutocomplete'
 import AircraftSelect from './AircraftSelect'
 import './FileNewLegModal.css'
@@ -54,6 +55,16 @@ export default function FileNewLegModal({ open, onClose }) {
   }, [open])
 
   if (!open) return null
+
+  function handleRandomRoute() {
+    const pool = [...AIRPORTS]
+    const depIdx = Math.floor(Math.random() * pool.length)
+    const dep = pool[depIdx]
+    pool.splice(depIdx, 1)
+    const arr = pool[Math.floor(Math.random() * pool.length)]
+    setDeparture(dep.icao)
+    setArrival(arr.icao)
+  }
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -180,6 +191,10 @@ export default function FileNewLegModal({ open, onClose }) {
           </div>
 
           <AircraftSelect value={aircraft} onChange={setAircraft} />
+
+          <button type="button" className="btn-random-route" onClick={handleRandomRoute}>
+            Random Route
+          </button>
 
           <div className="form-row two-col">
             <AirportAutocomplete

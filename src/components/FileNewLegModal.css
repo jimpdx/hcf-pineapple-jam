@@ -115,6 +115,26 @@
   grid-template-columns: 1fr 1fr;
 }
 
+/* Random route button */
+.btn-random-route {
+  align-self: flex-start;
+  background: rgba(26, 122, 109, 0.08);
+  border: 1px solid rgba(26, 122, 109, 0.25);
+  border-radius: 10px;
+  padding: 10px 20px;
+  color: #1a7a6d;
+  font-family: 'Outfit', system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-random-route:hover {
+  background: rgba(26, 122, 109, 0.15);
+  border-color: rgba(26, 122, 109, 0.4);
+}
+
 /* Error */
 .form-error {
   background: rgba(231, 76, 60, 0.08);

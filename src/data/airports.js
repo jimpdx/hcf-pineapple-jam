@@ -1,6 +1,5 @@
 export const AIRPORTS = [
   // Oahu
-  { icao: "PHNL", name: "Honolulu / Inouye", island: "Oahu" },
   { icao: "PHDH", name: "Dillingham", island: "Oahu" },
   { icao: "PHJR", name: "Kalaeloa", island: "Oahu" },
   // Maui
